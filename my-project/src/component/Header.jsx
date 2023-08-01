@@ -32,7 +32,7 @@ const Header = () => {
               </div> */}
             {/* </Link> */}
           </div>
-          <div className="text-2xl text-slate-600 relative">
+          <div className="text-2xl text-slate-500 relative">
             <FaUserAlt/>
           </div>
         </div>
