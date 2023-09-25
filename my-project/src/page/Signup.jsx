@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import loginSignupImage from "../assest/login-animation.gif";
 import { BiShow, BiHide } from "react-icons/bi";
 import { Link, useNavigate } from "react-router-dom";
+import { ImagetoBase64 } from "../utility/ImagetoBase64";
+
 
 
 
@@ -26,9 +28,24 @@ function Signup() {
       };
     });
   };
-  const handleShowPassword = () => {
+
+  const handleUploadProfileImage = async(e)=>{
+    const data = await ImagetoBase64(e.target.files[0])
+    console.log(data)
+
+    setData((preve)=>{
+        return{
+          ...preve,
+          image : data
+        }
+    })
+
+}
+
+
+  function handleShowPassword() {
     setShowPassword((prev) => !prev);
-  };
+  }
 
   const handleShowConfirmPassword = () => {
     setShowConfirmPassword((preve) => !preve);
@@ -58,7 +75,13 @@ function Signup() {
       <div className="w-full max-w-sm bg-white m-auto flex items-center flex-col p-4">
         {/* <h1 className='text-center text-2xl'>Sign up</h1> */}
         <div className="w-20 h-20 overflow-hidden rounded-full drop-shadow-md shadow-md m-auto relative">
-          <img src={loginSignupImage} className='w-full' alt="Login/Signup" />
+        <img src={data.image ? data.image :  loginSignupImage} className="w-full h-full" />
+          <label htmlFor="profileImage">
+            <div className="absolute bottom-0 h-1/3  bg-slate-500 bg-opacity-50 w-full text-center cursor-pointer">
+              <p className="text-sm p-1 text-white">Upload</p>
+            </div>
+            <input type={"file"} id="profileImage" accept='image/*'  className="hidden" onChange={handleUploadProfileImage}/>
+          </label>
         </div>
         <form className='w-full py-3 flex flex-col ' onSubmit={handleSubmit}>
           <label htmlFor="fristName">FristName</label>
