@@ -51,13 +51,32 @@ function Signup() {
     setShowConfirmPassword((preve) => !preve);
   };
 
+  // console.log(process.env.REACT_APP_SERVER_DOMAIN);
+  // console.log(process.env.REACT_APP_SERVER_DOMIN)
+  // console.log(process.env.VITE_REACT_APP_SERVER_DOMAIN);
+  console.log(import.meta.env.VITE_REACT_APP_SERVER_DOMAIN);
+
+
   const handleSubmit =async(e)=>{
     e.preventDefault();
     const {firstName,email,password,confirmPassword}= data
     if(firstName && email && password && confirmPassword){
       if(password === confirmPassword){
+
+        const fetchData = await fetch(`${import.meta.env.VITE_REACT_APP_SERVER_DOMAIN}/signup`, {
+          method: "POST",
+          headers: {
+            "content-type": "application/json"
+          },
+          body: JSON.stringify(data)
+        });
+        
+        console.log(dataRes);
+        
+
+
         alert("succesfull")
-  navigate("/login")
+  // navigate("/login")
         
       }
       else{
