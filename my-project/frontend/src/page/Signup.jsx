@@ -3,7 +3,7 @@ import loginSignupImage from "../assest/login-animation.gif";
 import { BiShow, BiHide } from "react-icons/bi";
 import { Link, useNavigate } from "react-router-dom";
 import { ImagetoBase64 } from "../utility/ImagetoBase64";
-
+import { toast } from "react-hot-toast";
 
 
 
@@ -29,18 +29,18 @@ function Signup() {
     });
   };
 
-  const handleUploadProfileImage = async(e)=>{
+  const handleUploadProfileImage = async (e) => {
     const data = await ImagetoBase64(e.target.files[0])
     console.log(data)
 
-    setData((preve)=>{
-        return{
-          ...preve,
-          image : data
-        }
+    setData((preve) => {
+      return {
+        ...preve,
+        image: data
+      }
     })
 
-}
+  }
 
 
   function handleShowPassword() {
@@ -57,11 +57,12 @@ function Signup() {
   console.log(import.meta.env.VITE_REACT_APP_SERVER_DOMAIN);
 
 
-  const handleSubmit =async(e)=>{
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const {firstName,email,password,confirmPassword}= data
-    if(firstName && email && password && confirmPassword){
-      if(password === confirmPassword){
+    const { firstName, email, password, confirmPassword } = data;
+    if (firstName && email && password && confirmPassword) {
+      if (password === confirmPassword) {
+        console.log(data);
 
         const fetchData = await fetch(`${import.meta.env.VITE_REACT_APP_SERVER_DOMAIN}/signup`, {
           method: "POST",
@@ -69,23 +70,27 @@ function Signup() {
             "content-type": "application/json"
           },
           body: JSON.stringify(data)
-        });
-        
-        console.log(dataRes);
-        
+        })
+
+        const dataRes = await fetchData.json()
+        console.log(dataRes)
 
 
-        alert("succesfull")
-  // navigate("/login")
-        
+
+        // alert(dataRes.message);
+        toast(dataRes.message)
+        if (dataRes.alert) {
+          navigate("/login")
+        }
+
+
       }
-      else{
+      else {
         alert('passwords do not match')
       }
     }
-    else
-    {
-      alert ('please fill all the fields');
+    else {
+      alert('please fill all the fields');
     }
   }
 
@@ -94,12 +99,12 @@ function Signup() {
       <div className="w-full max-w-sm bg-white m-auto flex items-center flex-col p-4">
         {/* <h1 className='text-center text-2xl'>Sign up</h1> */}
         <div className="w-20 h-20 overflow-hidden rounded-full drop-shadow-md shadow-md m-auto relative">
-        <img src={data.image ? data.image :  loginSignupImage} className="w-full h-full" />
+          <img src={data.image ? data.image : loginSignupImage} className="w-full h-full" />
           <label htmlFor="profileImage">
             <div className="absolute bottom-0 h-1/3  bg-slate-500 bg-opacity-50 w-full text-center cursor-pointer">
               <p className="text-sm p-1 text-white">Upload</p>
             </div>
-            <input type={"file"} id="profileImage" accept='image/*'  className="hidden" onChange={handleUploadProfileImage}/>
+            <input type={"file"} id="profileImage" accept='image/*' className="hidden" onChange={handleUploadProfileImage} />
           </label>
         </div>
         <form className='w-full py-3 flex flex-col ' onSubmit={handleSubmit}>
@@ -109,8 +114,8 @@ function Signup() {
             id="firstName"
             name="firstName"
             className="mt-1 mb-2 w-full bg-slate-200 px-2 py-1 rounded focus-within:outline-blue-300"
-          value={data.firstName}
-          onChange={handleOnChange}
+            value={data.firstName}
+            onChange={handleOnChange}
           />
           <label htmlFor="lastName">Last Name</label>
           <input
@@ -118,8 +123,8 @@ function Signup() {
             id="lastName"
             name="lastName"
             className="mt-1 mb-2 w-full bg-slate-200 px-2 py-1 rounded focus-within:outline-blue-300"
-          value={data.lastName}
-          onChange={handleOnChange}
+            value={data.lastName}
+            onChange={handleOnChange}
           />
 
           <label htmlFor="email">Email</label>
@@ -128,8 +133,8 @@ function Signup() {
             id="email"
             name="email"
             className="mt-1 mb-2 w-full bg-slate-200 px-2 py-1 rounded focus-within:outline-blue-300"
-          value={data.email}
-          onChange={handleOnChange}
+            value={data.email}
+            onChange={handleOnChange}
           />
 
           <label htmlFor="password">Password</label>
@@ -139,8 +144,8 @@ function Signup() {
               id="password"
               name="password"
               className=" w-full bg-slate-200 border-none outline-none "
-            value={data.password}
-            onChange={handleOnChange}
+              value={data.password}
+              onChange={handleOnChange}
             />
             <span
               className="flex text-xl cursor-pointer"
@@ -156,8 +161,8 @@ function Signup() {
               id="confirmpassword"
               name="confirmPassword"
               className=" w-full bg-slate-200 border-none outline-none "
-            value={data.confirmPassword}
-            onChange={handleOnChange}
+              value={data.confirmPassword}
+              onChange={handleOnChange}
             />
             <span
               className="flex text-xl cursor-pointer"
