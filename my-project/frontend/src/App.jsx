@@ -28,32 +28,6 @@ function App() {
 
  
 
-  // useEffect(() => {
-  //   (async () => {
-  //     try {
-  //       const res = await fetch(`${import.meta.VITE_REACT_APP_SERVER_DOMAIN}/product`);
-  //       if (!res.ok) {
-  //         // Handle non-OK responses (e.g., error responses)
-  //         throw new Error(`HTTP error! Status: ${res.status}`);
-  //       }
-        
-  //       const resData = await res.json();
-  //       console.log(resData);
-  //     } catch (error) {
-  //       console.error("Error fetching data:", error);
-  //     }
-  //   })();
-  // }, []);
-
-  // useEffect(()=>{
-  //   (async()=>{
-  //     const res = await fetch (`${import.meta.env.VITE_REACT_APP_SERVER_DOMAIN}/product`)
-  //     const resData = await res.json()
-  //     console.log(resData)
-  //   })();
-
-  // },[]);
-
   return (
     <>
     <Toaster/>

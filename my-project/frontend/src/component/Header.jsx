@@ -22,6 +22,8 @@ const Header = () => {
   }
 
 
+  const cartItemNumber = useSelector((state)=>state.product.cartItem)
+
 
   console.log(`${import.meta.env.VITE_REACT_APP_ADMIN_EMAIL}`);
 
@@ -43,7 +45,7 @@ const Header = () => {
         <div className="flex items-center gap-4 md:gap-7">
           <nav className="gap-4 md:gap-6 text-base md:text-lg hidden md:flex">
             <Link to={""}>Home</Link>
-            <Link to={"menu"}>Menu</Link>
+            <Link to={"menu/651326528058d9397713d4e0"}>Menu</Link>
             <Link to={"about"}>About</Link>
             <Link to={"contact"}>Contact</Link>
           </nav>
@@ -51,7 +53,7 @@ const Header = () => {
             <Link to={"cart"}>
               <BsCartFill />
               <div className="absolute -top-1 -right-1 text-white bg-red-500 h-4 w-4 rounded-full m-0 p-0 text-sm text-center ">
-                1  {/* {cartItemNumber.length} */}
+                 {cartItemNumber.length}
               </div>
             </Link>
           </div>
@@ -81,6 +83,23 @@ const Header = () => {
                     Login
                   </Link>
                 )}
+                <nav className="text-base md:text-lg flex flex-col md:hidden">
+                  <Link to={""} className="px-2 py-1">
+                    Home
+                  </Link>
+                  <Link
+                    to={"menu/651326528058d9397713d4e0"}
+                    className="px-2 py-1"
+                  >
+                    Menu
+                  </Link>
+                  <Link to={"about"} className="px-2 py-1">
+                    About
+                  </Link>
+                  <Link to={"contact"} className="px-2 py-1">
+                    Contact
+                  </Link>
+                </nav>
                 
               </div>
             )}
