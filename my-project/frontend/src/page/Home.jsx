@@ -1,37 +1,29 @@
-
-import React, { useEffect, useRef, useState } from "react";
+import { useRef } from "react";
 import { useSelector } from "react-redux";
-import CardFeature from "../component/CardFeature";
-import HomeCard from "../component/homeCard";
 import { GrPrevious, GrNext } from "react-icons/gr";
-import Filterproduct from "../component/Filterproduct";
+import CardFeature from "../component/CardFeature";
+import HomeCard from "../component/HomeCard";
 import AllProduct from "../component/AllProduct";
-
 
 const Home = () => {
   const productData = useSelector((state) => state.product.productList);
-  const homeProductCartList = productData.slice(0,5);
+  const homeProductCartList = productData.slice(0, 5);
   const homeProductCartListVegetables = productData.filter(
-    (el) => el.category === "vegetable",
-    []
+    (el) => el.category === "vegetable"
   );
+
   const loadingArray = new Array(4).fill(null);
   const loadingArrayFeature = new Array(10).fill(null);
 
   const slideProductRef = useRef();
+
   const nextProduct = () => {
     slideProductRef.current.scrollLeft += 200;
   };
-  const preveProduct = () => {
+
+  const prevProduct = () => {
     slideProductRef.current.scrollLeft -= 200;
   };
-
-
- 
-
-
-  
-
 
   return (
     <div className="p-2 md:p-4">
@@ -42,19 +34,20 @@ const Home = () => {
             <img
               src="https://cdn-icons-png.flaticon.com/512/2972/2972185.png"
               className="h-7"
+              alt="Bike Delivery Icon"
             />
           </div>
           <h2 className="text-4xl md:text-7xl font-bold py-3">
-            Welcome to the  {" "}
+            Welcome to the{" "}
             <span className="text-red-600 text-"></span>
-            <span className="text-green-900 text-"> Manoja Online Groccey </span>
-            <span className="text-black-600 text-">Website </span>
+            <span className="text-green-900 text-"> Manoja Online Grocery </span>
+            <span className="text-black-600 text-">Website</span>
           </h2>
-          <p className="py-3 text-base ">
+          <p className="py-3 text-base">
             Lorem Ipsum is simply dummy text of the printing and typesetting
-            industry. Lorem Ipsum has been the industry's standard dummy text
-            ever since the 1500s, when an unknown printer took a galley of type
-            and scrambled it to make a type specimen book. It has survived not
+            industry. Lorem Ipsum has been the standard dummy text ever since
+            the 1500s, when an unknown printer took a galley of type and
+            scrambled it to make a type specimen book. It has survived not
             only five centuries
           </p>
           <button className="font-bold bg-red-500 text-slate-200 px-4 py-2 rounded-md">
@@ -77,7 +70,7 @@ const Home = () => {
                 );
               })
             : loadingArray.map((el, index) => {
-                return <HomeCard key={index+"loading"} loading={"Loading..."} />;
+                return <HomeCard key={index + "loading"} loading={"Loading..."} />;
               })}
         </div>
       </div>
@@ -89,7 +82,7 @@ const Home = () => {
           </h2>
           <div className="ml-auto flex gap-4">
             <button
-              onClick={preveProduct}
+              onClick={prevProduct}
               className="bg-slate-300 hover:bg-slate-400 text-lg  p-1 rounded"
             >
               <GrPrevious />
@@ -110,7 +103,7 @@ const Home = () => {
             ? homeProductCartListVegetables.map((el) => {
                 return (
                   <CardFeature
-                    key={el._id+"fruits"}
+                    key={el._id + "fruits"}
                     id={el._id}
                     name={el.name}
                     category={el.category}
@@ -119,13 +112,13 @@ const Home = () => {
                   />
                 );
               })
-            : loadingArrayFeature.map((el,index) => (
-                <CardFeature loading="Loading..." key={index+"cartLoading"} />
+            : loadingArrayFeature.map((el, index) => (
+                <CardFeature loading="Loading..." key={index + "cartLoading"} />
               ))}
         </div>
       </div>
-      
-      <AllProduct heading={"Your Product"}/>
+
+      <AllProduct heading={"Your Products"} />
     </div>
   );
 };

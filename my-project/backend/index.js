@@ -15,7 +15,7 @@ app.use(cors());
 app.use(express.json({ limit: "10mb" }));
 
 
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 3000;
 
 //Connect to manogodb
 mongoose.set("strictQuery", false);
@@ -46,7 +46,7 @@ mongoose
 
 
 app.get("/",(req,res)=>{
-    res.send("server is ruunig.")
+    res.send("server is running")
 })
 
 //API for Sign up page
