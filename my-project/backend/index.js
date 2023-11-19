@@ -15,9 +15,10 @@ app.use(cors());
 app.use(express.json({ limit: "10mb" }));
 
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 8080;
 
 //Connect to manogodb
+console.log(process.env.MONGODB_URL)
 mongoose.set("strictQuery", false);
 mongoose
   .connect(process.env.MONGODB_URL)
@@ -46,7 +47,7 @@ mongoose
 
 
 app.get("/",(req,res)=>{
-    res.send("server is running")
+    res.send("server is running inss")
 })
 
 //API for Sign up page
@@ -169,4 +170,4 @@ app.get("/product",async(req,res)=>{
 
 
 //TO check server is running or not
-  app.listen(PORT , ()=> console.log("server is runnnig " + PORT))
+  app.listen(PORT , ()=> console.log("server is runnniggggg " + PORT))

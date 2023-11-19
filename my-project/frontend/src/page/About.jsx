@@ -2,7 +2,9 @@ import React from 'react'
 
 function About() {
   return (
-    <div>About</div>
+    <div>About
+      console.log(`hi my name is `)
+    </div>
   )
 }
 
