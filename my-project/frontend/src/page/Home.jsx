@@ -40,7 +40,7 @@ const Home = () => {
           <h2 className="text-4xl md:text-7xl font-bold py-3">
             Welcome to the{" "}
             <span className="text-red-600 text-"></span>
-            <span className="text-green-900 text-"> Manoja Online Grocery </span>
+            <span className="text-green-900 text-"> Manoja's Online Grocery </span>
             <span className="text-black-600 text-">Website</span>
           </h2>
           <p className="py-3 text-base">
@@ -58,20 +58,20 @@ const Home = () => {
         <div className="md:w-1/2 flex flex-wrap gap-5 p-4 justify-center">
           {homeProductCartList[0]
             ? homeProductCartList.map((el) => {
-                return (
-                  <HomeCard
-                    key={el._id}
-                    id={el._id}
-                    image={el.image}
-                    name={el.name}
-                    price={el.price}
-                    category={el.category}
-                  />
-                );
-              })
+              return (
+                <HomeCard
+                  key={el._id}
+                  id={el._id}
+                  image={el.image}
+                  name={el.name}
+                  price={el.price}
+                  category={el.category}
+                />
+              );
+            })
             : loadingArray.map((el, index) => {
-                return <HomeCard key={index + "loading"} loading={"Loading..."} />;
-              })}
+              return <HomeCard key={index + "loading"} loading={"Loading..."} />;
+            })}
         </div>
       </div>
 
@@ -101,20 +101,20 @@ const Home = () => {
         >
           {homeProductCartListVegetables[0]
             ? homeProductCartListVegetables.map((el) => {
-                return (
-                  <CardFeature
-                    key={el._id + "fruits"}
-                    id={el._id}
-                    name={el.name}
-                    category={el.category}
-                    price={el.price}
-                    image={el.image}
-                  />
-                );
-              })
+              return (
+                <CardFeature
+                  key={el._id + "fruits"}
+                  id={el._id}
+                  name={el.name}
+                  category={el.category}
+                  price={el.price}
+                  image={el.image}
+                />
+              );
+            })
             : loadingArrayFeature.map((el, index) => (
-                <CardFeature loading="Loading..." key={index + "cartLoading"} />
-              ))}
+              <CardFeature loading="Loading..." key={index + "cartLoading"} />
+            ))}
         </div>
       </div>
 

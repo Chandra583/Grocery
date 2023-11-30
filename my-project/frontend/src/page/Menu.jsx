@@ -16,9 +16,9 @@ const Menu = () => {
     dispatch(addCartItem(productDisplay))
   };
 
-  const handleBuy = ()=>{
+  const handleBuy = () => {
     dispatch(addCartItem(productDisplay))
-      navigate("/cart")
+    navigate("/cart")
   }
   return (
     <div className="p-2 md:p-4">
@@ -39,8 +39,8 @@ const Menu = () => {
             <span>{productDisplay.price}</span>
           </p>
           <div className="flex gap-3">
-          <button onClick={handleBuy} className="bg-yellow-500 py-1 mt-2 rounded hover:bg-yellow-600 min-w-[100px]">Buy</button>
-          <button onClick={handleAddCartProduct} className="bg-yellow-500 py-1 mt-2 rounded hover:bg-yellow-600 min-w-[100px]">Add Cart</button>
+            <button onClick={handleBuy} className="bg-yellow-500 py-1 mt-2 rounded hover:bg-yellow-600 min-w-[100px]">Buy</button>
+            <button onClick={handleAddCartProduct} className="bg-yellow-500 py-1 mt-2 rounded hover:bg-yellow-600 min-w-[100px]">Add Cart</button>
           </div>
           <div>
             <p className="text-slate-600 font-medium">Description : </p>
@@ -49,7 +49,7 @@ const Menu = () => {
         </div>
       </div>
 
-      <AllProduct heading={"Related Product"}/>
+      <AllProduct heading={"Related Product"} />
     </div>
   );
 };

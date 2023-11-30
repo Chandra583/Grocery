@@ -165,7 +165,7 @@ app.post("/uploadProduct",async(req,res)=>{
 app.get("/product",async(req,res)=>{
   const data = await productModel.find({})
   res.send(JSON.stringify(data))
-  // res.send("working")
+  // res.send("working")q   
 })
 
 

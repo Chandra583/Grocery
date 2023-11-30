@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
-import {createBrowserRouter,createRoutesFromElements,Route,RouterProvider,} from "react-router-dom";
+import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider, } from "react-router-dom";
 import Home from "./page/Home";
 import Menu from "./page/Menu";
 import About from "./page/About";
@@ -25,7 +25,7 @@ const router = createBrowserRouter(
       <Route path="login" element={<Login />} />
       <Route path="newproduct" element={<Newproduct />} />
       <Route path="signup" element={<Signup />} />
-      <Route path="cart" element={<Cart/>} />
+      <Route path="cart" element={<Cart />} />
       {/* 
       <Route path="menu/:filterby" element={<Menu />} />
       <Route path="newproduct" element={<Newproduct />} />
@@ -38,6 +38,6 @@ const router = createBrowserRouter(
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <Provider store={store}>
-  <RouterProvider router={router} />
+    <RouterProvider router={router} />
   </Provider>
 )
